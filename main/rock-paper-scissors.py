@@ -1,8 +1,13 @@
 import random
+from colorama import init, Fore, Back, Style
+
+
+# Initialize Colorama
+init(autoreset=True)
 
 # Game images
 rock = '''
-    _______
+    _______  
 ---'   ____)
       (_____)
       (_____)
@@ -60,13 +65,13 @@ while True:
     mode = input("Do you have a playmate or want to play with the computer? Type '1' for playmate or '2' for computer: ")
     if mode == '1':
         # Two-player mode
-        print("Player 1's turn:")
+        print(Fore.RED + Back.GREEN + "Player 1's turn:")
         player1_choice = get_user_choice("Player 1")
         
         # Clear the screen or add separation (optional)
         print("\n" * 50)  # To create some space (to prevent Player 2 from seeing Player 1's choice)
 
-        print("Player 2's turn:")
+        print(Fore.YELLOW + "Player 2's turn:")
         player2_choice = get_user_choice("Player 2")
         
         result = determine_winner(player1_choice, player2_choice)
@@ -100,3 +105,6 @@ while True:
         break
 
 print("Thanks for playing!")
+
+
+
