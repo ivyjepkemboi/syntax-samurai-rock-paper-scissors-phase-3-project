@@ -1,4 +1,5 @@
 import random
+import time
 from colorama import init, Fore, Back, Style
 
 
@@ -36,6 +37,16 @@ scissors = '''
 # List to store the images
 game_images = [rock, paper, scissors]
 
+# Typewriter effect function
+
+def typewriter_effect(text, delay=0.05):
+    for char in text:
+        print(char, end='', flush=True)
+        time.sleep(delay)
+    print()  # for newline
+
+
+
 # Function to get user input and validate it
 def get_user_choice(player):
     while True:
@@ -61,8 +72,9 @@ def determine_winner(choice1, choice2):
         return "Player 2 wins!"
 
 # Main game loop
-while True:
-    mode = input("Do you have a playmate or want to play with the computer? Type '1' for playmate or '2' for computer: ")
+while True:    
+    typewriter_effect("Do you have a playmate or want to play with the computer? Type '1' for playmate or '2' for computer: " )
+    mode = input()
     if mode == '1':
         # Two-player mode
         print(Fore.RED + Back.GREEN + "Player 1's turn:")
@@ -83,7 +95,7 @@ while True:
 
         # Computer choice
         computer_choice = random.randint(0, 2)
-        print(f"Computer chose:")
+        typewriter_effect(f"Computer chose:")
         print(game_images[computer_choice])
 
         # Determine winner
@@ -100,11 +112,12 @@ while True:
         print("Invalid input, please type '1' or '2'.")
 
     # Ask if the user wants to play again
-    play_again = input("Do you want to play again? (yes/no): ").lower()
+    typewriter_effect("Do you want to play again? (yes/no): ")
+    play_again = input().lower()
     if play_again != 'yes':
         break
 
-print("Thanks for playing!")
+typewriter_effect("Thanks for playing!")
 
 
 
